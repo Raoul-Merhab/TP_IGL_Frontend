@@ -1,9 +1,9 @@
-import Upload from "@/components/upload/Upload";
+import Form1 from "@/components/forms/form1";
 
 export default function Home() {
   return (
     <div>
-      <Upload/>
+      <Form1/>
     </div>
   )
 }
