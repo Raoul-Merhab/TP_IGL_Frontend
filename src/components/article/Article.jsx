@@ -21,7 +21,7 @@ const Article = () => {
   }
   var result = diviserEnDeux(text);
   return (
-    <div className="px-[190px] bg-aa-white text-black py-5 text">
+    <div className="px-[190px] bg-aa-white text-black py-5">
       <div className="bg-aa-gris  py-10  rounded-lg">
         <div className="px-4 flex justify-between items-center">
           <p className="text-[20px] font-semibold text-aa-vert">
@@ -31,7 +31,7 @@ const Article = () => {
           <div className="flex gap-3">
             <Image src={heartIcon} /> <p>Sauvegarder</p>
           </div>
-          
+
           <div className="flex gap-3">
             <Image src={download} /> <p>Télécharger PDF </p>
           </div>
