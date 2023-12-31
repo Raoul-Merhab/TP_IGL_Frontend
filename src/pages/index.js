@@ -1,9 +1,9 @@
-import Form1 from "@/components/forms/form1";
+import Article from "@/components/article/Article";
 
 export default function Home() {
   return (
     <div>
-      <Form1/>
+      <Article/>
     </div>
   )
 }
