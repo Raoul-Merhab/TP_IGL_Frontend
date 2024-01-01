@@ -13,9 +13,13 @@ const Navbar = ({ active, setActive }) => {
       name: "Acceuil",
     },
     {
-      path: "/favoris",
-      name: "Favoris",
+      path: "/upload",
+      name: "Upload",
     },
+    {
+        path: "/moderateurs",
+        name: "Moderateur",
+      },
   
   ];
 
@@ -38,11 +42,11 @@ const Navbar = ({ active, setActive }) => {
       <div className="w-full h-6 bg-[#113E21]" />
       <nav className="w-full flex bg-[#FEFEFE] justify-between mt-1 items-center text-black">
 
-        <div className='flex flex-col gap-3 justify-between items-center'>
+        <div className=' flex flex-col gap-3 justify-between items-center'>
           <a href="/" onClick={() => setActive("Acceuil")}>
             <Image src={logo} className="top-6 w-[135px] h-[111px]" />
           </a>
-          <p className=' text-aa-vert font-semibold'>Article Atlas</p>
+          <p className='text-aa-vert font-semibold'>Article Atlas</p>
         </div>
 
         <div className="md:hidden">
@@ -142,13 +146,13 @@ const Navbar = ({ active, setActive }) => {
           <div className="relative flex flex-col items-center rounded-lg gap-1">
 
             <div className='flex mb-2 justify-between bg-[#F0F0F0] w-56 px-1 py-4 rounded-lg'>
-              <p className=" font-semibold ml-4">Yahi Hiba Farah Yazi</p>
+              <p className=" font-semibold ml-2">Yahi Hiba Farah Yazi</p>
               <Image src={moreIcon} className="cursor-pointer" onClick={toggleName} />
             </div>
 
             {isOpen &&
               <div className='absolute top-16 flex justify-between bg-[#F0F0F0] w-56 px-1 py-4 rounded-lg'>
-                <p className='font-semibold ml-4 '>Parametres du compte</p>
+                <p className='font-semibold'>Parametres du compte</p>
                 <Image src={settings} className='cursor-pointer' onClick={toggleName} />
               </div>}
           </div>

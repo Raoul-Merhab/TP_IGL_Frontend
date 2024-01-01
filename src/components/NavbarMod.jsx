@@ -7,17 +7,6 @@ import settings from "../../public/assets/settings.svg";
 const Navbar = ({ active, setActive }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const links = [
-    {
-      path: "/",
-      name: "Acceuil",
-    },
-    {
-      path: "/favoris",
-      name: "Favoris",
-    },
-  
-  ];
 
   const linkss = [
     {
@@ -42,7 +31,7 @@ const Navbar = ({ active, setActive }) => {
           <a href="/" onClick={() => setActive("Acceuil")}>
             <Image src={logo} className="top-6 w-[135px] h-[111px]" />
           </a>
-          <p className=' text-aa-vert font-semibold'>Article Atlas</p>
+          <p className='text-aa-vert font-semibold'>Article Atlas</p>
         </div>
 
         <div className="md:hidden">
@@ -71,17 +60,7 @@ const Navbar = ({ active, setActive }) => {
                 </svg>
                 <div className="flex flex-col shadow-md md:hidden">
 
-                  {links.map((link) => (
-                    <a
-                      key={link.name}
-                      href={link.path}
-                      className={`${active === link.name ? 'block  text-[#B38B59] font-semibold' : ''
-                        } block text-[20px] font-medium py-2 px-4 transition-colors  duration-300 ease-in-out text-[#113E21] hover:bg-[#F0F0F0] hover:text-[#B38B59]`}
-                      onClick={() => setActive(link.name)}
-                    >
-                      {link.name}
-                    </a>
-                  ))}
+                 
                   {linkss.map((link) => (
                     <a
                       key={link.name}
@@ -119,36 +98,20 @@ const Navbar = ({ active, setActive }) => {
           </button>
         </div>
 
-        <div className="hidden md:flex gap-4 items-center w-auto">
-
-          {links.map((link) => (
-            <a
-              key={link.name}
-              href={link.path}
-              className={`${active === link.name ? 'block text-[#B38B59] font-semibold' : ''
-                } block text-[20px] font-medium py-2 px-4 transition-colors duration-300 ease-in-out hover:bg-[#F0F0F0] hover:text-[#B38B59]`}
-              onClick={() => setActive(link.name)}
-            >
-              {link.name}
-            </a>
-          ))}
-
-
-
-        </div>
+        
 
         <div className='hidden md:flex gap-4 mr-6'>
         <div className='hidden md:flex gap-4'>
           <div className="relative flex flex-col items-center rounded-lg gap-1">
 
             <div className='flex mb-2 justify-between bg-[#F0F0F0] w-56 px-1 py-4 rounded-lg'>
-              <p className=" font-semibold ml-4">Yahi Hiba Farah Yazi</p>
+              <p className="font-semibold  ml-2">Yahi Hiba Farah Yazi</p>
               <Image src={moreIcon} className="cursor-pointer" onClick={toggleName} />
             </div>
 
             {isOpen &&
               <div className='absolute top-16 flex justify-between bg-[#F0F0F0] w-56 px-1 py-4 rounded-lg'>
-                <p className='font-semibold ml-4 '>Parametres du compte</p>
+                <p className='font-semibold'>Parametres du compte</p>
                 <Image src={settings} className='cursor-pointer' onClick={toggleName} />
               </div>}
           </div>

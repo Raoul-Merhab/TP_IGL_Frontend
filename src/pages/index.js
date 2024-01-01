@@ -1,9 +1,10 @@
-import Form1 from "@/components/forms/form1";
 
-export default function Home() {
-  return (
+import SearchDetail from "@/components/searchResult/searchDetail";
+export default function Home(){
+  return(
     <div>
-      <Form1/>
+      <SearchDetail/>
     </div>
   )
 }
+
