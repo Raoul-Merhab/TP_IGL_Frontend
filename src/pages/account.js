@@ -2,12 +2,10 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from "react"
 import getAndRedirect from '@/data/getAndRedirect'
 import Loader from '@/components/Loader'
-import AdminPage from '@/components/admin/AdminPage'
-import ModPage from '@/components/mod/ModPage'
-import Main from '@/components/Main'
+import MyAccount from '@/components/auth/MyAccount'
 
-export default function Home() {
-	const [loading, setLoading] = useState(true)
+const account = () => {
+    const [loading, setLoading] = useState(true)
 	const [cookie, setCookie] = useState({})
 	const router = useRouter()
 	useEffect(() => {
@@ -20,21 +18,16 @@ export default function Home() {
 	
 		return () => clearTimeout(delayTimeout);
 	},[])
-	
 	return (
 		<>
-			<div className={`  ${loading?"":"hidden"} absolute top-0 bg-aa-vert w-screen h-screen flex justify-center items-center z-50`}>
+			<div className={` ${loading?"":"hidden"} absolute top-0 bg-aa-vert w-screen h-screen flex justify-center items-center z-50`}>
 				<Loader />
 			</div>
-			{/* {
-				cookie?.role === "Administrateur" &&
-				<AdminPage cookie={cookie} />
-			}
-			{
-				cookie?.role === "Moderateur" &&
-				<ModPage cookie={cookie} />
-			} */}
-			<Main cookie={cookie} />
+			<MyAccount cookie={cookie} />
 		</>
+
   	)
 }
+
+
+export default account
