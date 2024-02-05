@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from 'next/router'
 import handleSignIn from "@/data/auth/handleSignIn";
+import { Oval } from "react-loader-spinner";
 
 const SignIn = () => {
+	const [loading, setLoading] = useState(false);
 	const router = useRouter()
 	const {
 		register,
@@ -13,11 +15,15 @@ const SignIn = () => {
 		formState: { errors },
 	} = useForm();
 	const onSubmit = async (data) => {
+		console.log("ok");
+		setLoading(true);
 		await handleSignIn(data.email, data.password).then((res)=>{
+			console.log(res);
 			if ( res.status ){
 				router.replace('/')
 			}
 			setError(res);
+			setLoading(false);
 		})
 	};
 	const [error, setError] = useState({
@@ -99,13 +105,30 @@ const SignIn = () => {
 								</span>
 							)
 						}
-						<div className="flex justify-center items-center bg-aa-vert text-white w-full cursor-pointer py-3 md:py-4 rounded-md  hover:bg-aa-vert/[0.8] transition-colors duration-[0.2s]">
-							<button
-								className="w-full bg-transparent uppercase"
-								type="submit"
-							>
-								Se Connecter
-							</button>
+						<div className={`flex justify-center items-center bg-aa-vert text-white w-full cursor-pointer py-3 md:py-4 rounded-md  ${!loading&&"hover:bg-aa-vert/[0.8] transition-colors duration-[0.2s]"}`}>
+							{
+								loading?
+								<div className=" w-full bg-aa-vert h-8 justify-center flex items-center">
+									<Oval
+										visible={true}
+										height="40"
+										strokeWidth={6}
+										width="40"
+										color="#FFF"
+										secondaryColor="#113E21"
+										ariaLabel="oval-loading"
+										wrapperStyle={{}}
+										wrapperClass=""
+									/>
+								</div>
+								:
+								<button
+									className="w-full bg-transparent uppercase h-8"
+									type="submit"
+								>
+									Se Connecter
+								</button>
+							}
 						</div>
 					</form>
 					<div className=" text-[#252620] font-medium flex justify-center items-center text-base text-center md:text-lg">

@@ -1,6 +1,6 @@
 import Api from "@/api/Api"
 import Urls from "@/api/Urls"
-import saveCookies from "../saveCookies"
+import saveCookies from "../cookies/saveCookies"
 
 const handleSignUp = async (email, password, nom) => {
     const data = {
@@ -16,10 +16,10 @@ const handleSignUp = async (email, password, nom) => {
             detail:result
         }
     }).catch((error) => {
-        console.log(error.response.data)
+        console.log(error?.response?.data)
         return {
             status:false,
-            detail:error.response.data.detail
+            detail:error?.response?.data?.detail || "Erreur d'acces au serveur"
         }
     })
 }
