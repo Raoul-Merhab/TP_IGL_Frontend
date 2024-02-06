@@ -19,12 +19,12 @@ const AdminUpload = ({cookie}) => {
             setResponse(result)
         })
     }
+    const getData = async () =>{
+        await getArticles(cookie.token).then((result) => {
+            setArticles(result)
+        })
+    }
     useEffect(() => {
-        const getData = async () =>{
-            await getArticles(cookie.token).then((result) => {
-                setArticles(result)
-            })
-        }
         getData()
     }, [])
     return (

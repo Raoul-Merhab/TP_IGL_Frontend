@@ -6,12 +6,11 @@ const handleUpload = async (token, link) => {
         token: token,
         link: link
     }
-    await Api.post(Urls.UPLOAD_ARTICLE, body).then(response => {
+    return await Api.post(Urls.UPLOAD_ARTICLE, body).then(response => {
         return response.data.detail
     }).catch(error => {
         console.log(error);
     })
-    return "ok"
 }
 
 export default handleUpload
