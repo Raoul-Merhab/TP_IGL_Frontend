@@ -9,6 +9,7 @@ const Urls = {
     GET_ARTICLES:"/admin/liste-des-articles",
     AJOUTER_MOD:"/admin/ajouter-moderateur",
     SUPPRIMER_MOD:"/admin/supprimer-moderateur",
+    UPLOAD_ARTICLE:"/admin/upload-article",
     // user endpoints
     GET_FAVORIS:"/user/articles-favoris",
     ADD_FAVORI:"/user/ajouter-article-favoris",

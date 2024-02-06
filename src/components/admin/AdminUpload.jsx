@@ -4,17 +4,19 @@ import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { Oval } from "react-loader-spinner";
 import handleUpload from "@/data/admin/handleUpload";
 import getArticles from "@/data/admin/getArticles";
+import getCookies from "@/data/cookies/getCookies";
 
 const AdminUpload = ({cookie}) => {
 	const [link, setLink] = useState("");
+    const [response, setResponse] = useState(null);
     const [loading, setLoading] = useState(false);
     const [articles, setArticles] = useState([]);
     const onClickUpload = async () => {
         setLoading(true)
-        await handleUpload(link).then((result) => {
-            setTimeout(() => {
-                setLoading(false)
-            }, 1000)
+        await handleUpload(getCookies().token,link).then((result) => {
+            getData()
+            setLoading(false)
+            setResponse(result)
         })
     }
     useEffect(() => {
@@ -40,28 +42,36 @@ const AdminUpload = ({cookie}) => {
                     size="10x"
                     className=" hidden md:block"
                 />
-                <div className=" w-[80%] self-center  flex flex-col gap-8">
-                    <div className=" flex flex-col gap-4">
-                        <p className=" text-xl font-bold">Lien de l'article PDF :</p>
-                        <input type="text" value={link} className=" w-full text-xl px-2 py-2" onChange={(event)=>{setLink(event.target.value)}} />
+                <div className=" w-[80%] self-center flex flex-col py-4 gap-4">
+                    <div className=" w-full self-center flex flex-col gap-8">
+                        <div className=" flex flex-col gap-4">
+                            <p className=" text-xl font-bold">Lien de l'article PDF :</p>
+                            <input type="text" value={link} className=" w-full text-xl px-2 py-2" onChange={(event)=>{setLink(event.target.value);setResponse(null)}} />
+                        </div>
+                        {
+                            loading?
+                            <div className=" w-full bg-aa-marron h-10 rounded-lg flex items-center justify-center">
+                                <Oval
+                                    visible={true}
+                                    strokeWidth={6}
+                                    height="30"
+                                    width="30"
+                                    color="#FFF"
+                                    secondaryColor="#B38B59"
+                                    ariaLabel="oval-loading"
+                                    wrapperStyle={{}}
+                                    wrapperClass=""
+                                />
+                            </div>
+                            :
+                            <button type="button" className=" bg-aa-marron w-full text-aa-white py-2 rounded-lg" onClick={onClickUpload}>Upload</button>
+                        }
                     </div>
                     {
-                        loading?
-                        <div className=" w-full bg-aa-marron h-10 rounded-lg flex items-center justify-center">
-                            <Oval
-                                visible={true}
-                                strokeWidth={6}
-                                height="30"
-                                width="30"
-                                color="#FFF"
-                                secondaryColor="#B38B59"
-                                ariaLabel="oval-loading"
-                                wrapperStyle={{}}
-                                wrapperClass=""
-                            />
+                        response &&
+                        <div className=" w-full text-center text-aa-vert font-bold text-xl">
+                            {response}
                         </div>
-                        :
-                        <button type="button" className=" bg-aa-marron w-full text-aa-white py-2 rounded-lg" onClick={onClickUpload}>Upload</button>
                     }
                 </div>
             </div>
