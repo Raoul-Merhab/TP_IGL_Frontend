@@ -28,7 +28,7 @@ const UserFavoris = ({ cookie }) => {
 						<h2 className="text-2xl sm:text-3xl lg:text-4xl max-w-[290px] font-bold text-aa-vert">
 							Consulter Mes Favoris
 						</h2>
-						<p>Lorem ipsum dolor sit amet consectetur adip</p>
+						<p>Le moteur de recherche scientifique basé sur l'IA</p>
 					</div>
 				</div>
                 <div className=" ml-[10%] w-[80%] self-center text-black flex flex-col items-center justify-center py-10 gap-3">

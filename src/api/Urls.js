@@ -14,7 +14,9 @@ const Urls = {
     GET_FAVORIS:"/user/articles-favoris",
     ADD_FAVORI:"/user/ajouter-article-favoris",
     DOWNLOAD_FAVORI:"/user/telecharger-article-favoris",
-    DELETE_FAVORI:"/user/supprimer-article-favoris"
+    DELETE_FAVORI:"/user/supprimer-article-favoris",
+    SEARCH:"/user/search",
+    GET_ARTICLE:"/user/get-article",
 }
 
 export default Urls

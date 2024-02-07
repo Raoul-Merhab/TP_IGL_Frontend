@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import SearchBar from "@/components/SearchBar";
 import OneArticleView from "@/components/OneArticleView";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const SearchResults = ({cookie, value, setValue, toSearch, results, setResults, onClickConsulter}) => {
 	const router = useRouter();
@@ -20,7 +21,7 @@ const SearchResults = ({cookie, value, setValue, toSearch, results, setResults, 
 						<h2 className="text-2xl sm:text-3xl lg:text-4xl max-w-[290px] font-bold text-aa-vert">
 							Bienvenu Sur Article Atlas
 						</h2>
-						<p>Lorem ipsum dolor sit amet consectetur adip</p>
+						<p>Le moteur de recherche scientifique basé sur l'IA</p>
 					</div>
 				</div>
 			</div>

@@ -28,17 +28,17 @@ const MyAccount = ({cookie}) => {
         router.push("/favoris")
     }
     useEffect(()=>{
+        console.log(getCookies());
         getData();
     },[])
     return (
         <div className=' flex flex-col h-screen bg-[#113E21]'>
-			<Navbar role={1} user={cookie.nom} disableSettings={true} current={"Account"} functions={[onClickAccueil, onClickFavoris]} />
+			<Navbar role={getCookies()?.role === "Utilisateur" ? 1 : getCookies()?.role === "Moderateur" ? 2:3} user={cookie.nom} disableSettings={true} current={"Account"} functions={[onClickAccueil, onClickFavoris]} />
 			<div className=" h-[20%] w-full px-8 sm:px-16 lg:px-32 py-10 bg-aa-gris text-black" onClick={onSubmit}>
 				<div>
 					<h2 className="text-2xl sm:text-3xl lg:text-4xl max-w-[290px] font-bold text-aa-vert">
 						Parametres De Votre Compte
 					</h2>
-					<p>Lorem ipsum dolor sit amet consectetur adip</p>
 				</div>
 			</div>
             <div className=' h-[66%] w-[60%] self-center rounded-3xl my-[2%] bg-aa-white overflow-y-scroll hide-scroll-bar'>

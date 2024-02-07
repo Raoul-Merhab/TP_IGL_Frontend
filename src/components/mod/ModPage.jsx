@@ -1,22 +1,14 @@
 import SearchBar from "@/components/SearchBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faFolderClosed, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import Navbar from "../Navbar";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import Navbar from "@/components/Navbar";
 import { useRouter } from "next/router";
 import getCookies from "@/data/cookies/getCookies";
 
 const ModPage = ({ cookie, article, value, setValue, onClickSearch, backToResults }) => {
 	const router = useRouter();
-	
-	const mc =
-		"lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum";
-	const text =
-		"lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ";
-	const references = [
-		"Resmue lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ips...",
-		"Resmue lorem  ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ips...",
-	];
-	const institutions = ["lorem loren", "lorem loren"];
+	const [step, setStep] = useState("Vue");
 	function diviserEnDeux(chaine) {
 		var longueur = chaine.length;
 		var moitie = Math.floor(longueur / 2);
@@ -26,13 +18,13 @@ const ModPage = ({ cookie, article, value, setValue, onClickSearch, backToResult
 
 		return [partie1, partie2];
 	}
-	var result = diviserEnDeux(text);
-    const onClickAddFavoris = () =>{
-        console.log(article);
-    }
-    const onClickDownload = () =>{
-
-    }
+	var result = diviserEnDeux(article.texte);
+    const onClick = () => {
+		if ( step === "Vue" )
+		setStep("Edit")
+		else
+		setStep("Vue")
+	}
 	return (
 		<div className="bg-[#FEFEFE] h-screen w-full">
 			<Navbar
@@ -48,7 +40,7 @@ const ModPage = ({ cookie, article, value, setValue, onClickSearch, backToResult
 						<h2 className="text-2xl sm:text-3xl lg:text-4xl max-w-[290px] font-bold text-aa-vert">
 							Bienvenu Sur Article Atlas
 						</h2>
-						<p>Lorem ipsum dolor sit amet consectetur adip</p>
+						<p>Le moteur de recherche scientifique basé sur l'IA</p>
 					</div>
 				</div>
 			</div>
@@ -72,22 +64,6 @@ const ModPage = ({ cookie, article, value, setValue, onClickSearch, backToResult
 
 							<div className="flex justify-between gap-3 sm:gap-5 items-center   lg:flex-row  flex-col ">
 								<p>{article.date}</p>
-								<div className="flex gap-3 cursor-pointer items-center" onClick={onClickAddFavoris}>
-                                    <FontAwesomeIcon
-                                        icon={faHeart}
-                                        color={"red"}
-                                        size="1x"
-                                    />
-                                    <p>Sauvegarder</p>
-								</div>
-								<div className="flex gap-3 cursor-pointer items-center" onClick={onClickDownload}>
-                                    <FontAwesomeIcon
-                                        icon={faFolderClosed}
-                                        color={"#000"}
-                                        size="1x"
-                                    />
-                                    <p>Télécharger PDF </p>
-								</div>
 							</div>
 						</div>
 
@@ -95,13 +71,6 @@ const ModPage = ({ cookie, article, value, setValue, onClickSearch, backToResult
 							<p>
 								{" "}
 								{article.authors.map((e, index) => (
-									<span key={index} className=" font-normal">
-										{e},
-									</span>
-								))}
-							</p>
-							<p>
-								{institutions.map((e, index) => (
 									<span key={index} className=" font-normal">
 										{e},
 									</span>
@@ -123,7 +92,7 @@ const ModPage = ({ cookie, article, value, setValue, onClickSearch, backToResult
 										<span className="font-bold text-[15px] sm:text-[18px]">
 											Mots clés :{" "}
 										</span>{" "}
-										{mc}
+										{article.mots_cles}
 									</p>
 								</div>
 								<div>{result[0]}</div>
@@ -134,7 +103,7 @@ const ModPage = ({ cookie, article, value, setValue, onClickSearch, backToResult
 									<span className="font-bold text-[15px] sm:text-[18px]">
 										References :{" "}
 									</span>{" "}
-									{references.map((e, index) => (
+									{article.references.map((e, index) => (
 										<div
 											key={index}
 											className=" font-normal"
@@ -147,6 +116,9 @@ const ModPage = ({ cookie, article, value, setValue, onClickSearch, backToResult
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className=" w-[70%] ml-[15%] flex justify-center items-center ">
+				<button className=" w-56 text-center flex justify-center items-center bg-aa-vert text-xl text-aa-marron h-10 p-4" onClick={onClick}>{step === "Vue"?"Modifier":"Sauvegarder"}</button>
 			</div>
 		</div>
 	);

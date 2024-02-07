@@ -7,15 +7,6 @@ import { useRouter } from "next/router";
 const UserPage = ({ cookie, article, value, setValue, onClickSearch, backToResults }) => {
 	const router = useRouter();
 	
-	const mc =
-		"lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum";
-	const text =
-		"lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ";
-	const references = [
-		"Resmue lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ips...",
-		"Resmue lorem  ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ips...",
-	];
-	const institutions = ["lorem loren", "lorem loren"];
 	function diviserEnDeux(chaine) {
 		var longueur = chaine.length;
 		var moitie = Math.floor(longueur / 2);
@@ -25,7 +16,7 @@ const UserPage = ({ cookie, article, value, setValue, onClickSearch, backToResul
 
 		return [partie1, partie2];
 	}
-	var result = diviserEnDeux(text);
+	var result = diviserEnDeux(article.texte);
     const onClickAddFavoris = () =>{
         console.log(article);
     }
@@ -47,7 +38,7 @@ const UserPage = ({ cookie, article, value, setValue, onClickSearch, backToResul
 						<h2 className="text-2xl sm:text-3xl lg:text-4xl max-w-[290px] font-bold text-aa-vert">
 							Bienvenu Sur Article Atlas
 						</h2>
-						<p>Lorem ipsum dolor sit amet consectetur adip</p>
+						<p>Le moteur de recherche scientifique basé sur l'IA</p>
 					</div>
 				</div>
 			</div>
@@ -99,13 +90,6 @@ const UserPage = ({ cookie, article, value, setValue, onClickSearch, backToResul
 									</span>
 								))}
 							</p>
-							<p>
-								{institutions.map((e, index) => (
-									<span key={index} className=" font-normal">
-										{e},
-									</span>
-								))}
-							</p>
 						</div>
 						<div className="flex flex-col sm:flex-row gap-0 sm:gap-9 px-8">
 							<div className="flex flex-col gap-11">
@@ -122,7 +106,7 @@ const UserPage = ({ cookie, article, value, setValue, onClickSearch, backToResul
 										<span className="font-bold text-[15px] sm:text-[18px]">
 											Mots clés :{" "}
 										</span>{" "}
-										{mc}
+										{article.mots_cles}
 									</p>
 								</div>
 								<div>{result[0]}</div>
@@ -133,7 +117,7 @@ const UserPage = ({ cookie, article, value, setValue, onClickSearch, backToResul
 									<span className="font-bold text-[15px] sm:text-[18px]">
 										References :{" "}
 									</span>{" "}
-									{references.map((e, index) => (
+									{article.references.map((e, index) => (
 										<div
 											key={index}
 											className=" font-normal"

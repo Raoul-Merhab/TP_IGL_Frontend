@@ -23,7 +23,7 @@ const SearchBar = ({value, setValue, clickSearch}) => {
                     <button className="text-white sm:text-base " onClick={clickSearch}>Recherche</button>
                 </div>
             </div>
-            <p className=' text-aa-marron w-[80%] text-center'>lorem ipsum lorem ipsum lorem ipsum</p>
+            <p className=' text-aa-marron w-[80%] text-center'>Entrez votre requete puis cliquez sur Recherche</p>
         </div>
     )
 }
