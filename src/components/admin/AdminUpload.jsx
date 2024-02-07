@@ -84,7 +84,7 @@ const AdminUpload = ({cookie}) => {
                     :
                     <div className=" w-[80%] ml-[10%] flex flex-col gap-4 h-full py-4">
                         <p className=" text-aa-white font-semibold text-xl">Articles uploadés :</p>
-                        <div className=" flex flex-col gap-4 w-full items-center overflow-y-scroll pr-2">
+                        <div className=" flex flex-col gap-4 w-full items-center overflow-y-scroll hide-scroll-bar pr-2">
                             {
                                 articles.map((article, index) => {
                                     return (

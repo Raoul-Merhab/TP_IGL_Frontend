@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import getAndRedirect from '@/data/getAndRedirect'
 import Loader from '@/components/Loader'
 import UserFavoris from '@/components/user/UserFavoris'
-import getCookies from '@/data/cookies/getCookies'
 import Image from 'next/image'
 import logo from "assets/Logo.png";
 
@@ -15,9 +14,6 @@ const account = () => {
 	useEffect(() => {
 		const delayTimeout = setTimeout(()=>{
             getAndRedirect(setCookie, router)
-            if ( getCookies()?.role != "Utilisateur" ){
-                router.push('/')
-            }
         }, 0);
 	
 		return () => clearTimeout(delayTimeout);

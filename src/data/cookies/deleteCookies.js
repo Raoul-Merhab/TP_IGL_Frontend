@@ -1,5 +1,5 @@
 import Cookies from "js-cookie"
-const getCookies = () =>{
+const deleteCookies = () =>{
     Cookies.remove("articleAtlas")
 }
-export default getCookies
+export default deleteCookies

@@ -36,7 +36,6 @@ const Navbar = ({ role, user, disableSettings, current, functions }) => {
 					router.push("/");
 				},
 				name: "Accueil",
-				color: "black",
 			}
 		],
 		"Administrateur":[

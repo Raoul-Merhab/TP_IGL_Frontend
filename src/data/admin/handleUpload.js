@@ -9,7 +9,7 @@ const handleUpload = async (token, link) => {
     return await Api.post(Urls.UPLOAD_ARTICLE, body).then(response => {
         return response.data.detail
     }).catch(error => {
-        console.log(error);
+        return "Erreur d'acces au serveur"
     })
 }
 

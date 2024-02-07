@@ -4,7 +4,7 @@ import handleSupprimerArticleFavori from "@/data/user/handleSupprimerArticleFavo
 import handleTelechargerArticleFavori from "@/data/user/handleTelechargerArticleFavori";
 import getCookies from "@/data/cookies/getCookies";
 import { useState } from "react";
-const OneArticleView = ({article, articles, setArticles}) => {
+const OneArticleViewFavoris = ({article, articles, setArticles}) => {
     const [pdfFiole, setPdfFiole] = useState(null)
 	const onClickSupprimer = () =>{
 		handleSupprimerArticleFavori(getCookies().token, article.ID)
@@ -70,4 +70,4 @@ const OneArticleView = ({article, articles, setArticles}) => {
 	);
 }
 
-export default OneArticleView
+export default OneArticleViewFavoris

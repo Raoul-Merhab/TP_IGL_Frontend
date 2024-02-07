@@ -3,8 +3,8 @@ import { useEffect, useState } from "react"
 import getAndRedirect from '@/data/getAndRedirect'
 import Loader from '@/components/Loader'
 import AdminPage from '@/components/admin/AdminPage'
-import ModPage from '@/components/mod/ModPage'
-import Main from '@/components/Main'
+import ModMain from '@/components/mod/ModMain'
+import Main from '@/components/user/Main'
 
 export default function Home() {
 	const [loading, setLoading] = useState(true)
@@ -26,15 +26,18 @@ export default function Home() {
 			<div className={`  ${loading?"":"hidden"} absolute top-0 bg-aa-vert w-screen h-screen flex justify-center items-center z-50`}>
 				<Loader />
 			</div>
-			{/* {
+			{
 				cookie?.role === "Administrateur" &&
 				<AdminPage cookie={cookie} />
 			}
 			{
 				cookie?.role === "Moderateur" &&
-				<ModPage cookie={cookie} />
-			} */}
-			<Main cookie={cookie} />
+				<ModMain />
+			}
+			{
+				cookie?.role === "Utilisateur" &&
+				<Main  cookie={cookie} />
+			}
 		</>
   	)
 }
